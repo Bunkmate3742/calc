@@ -20,5 +20,31 @@ namespace HelloWorldAPI.Controllers
             string message = $"Hello, {_name}!";
             return Ok(message);
         }
+
+        [HttpGet("{numOne}/{action}/{numTwo}")]
+        public IActionResult Calc(double numOne, string action, double numTwo)
+        {
+            double result;
+            
+            switch(action) 
+            {
+              case "ADD":
+                result = numOne + numTwo;
+                break;
+              case "SUBTRACT":
+                result = numOne + numTwo;
+                break;
+              case "MULTIPLY":
+                result = numOne * numTwo;
+                break;
+              case "DIVIDE":
+                result = numOne / numTwo;
+                break;
+              default:
+                return BadRequest("Bad Action Given.");
+            }
+            
+            return Ok(result);
+        }
     }
 }
