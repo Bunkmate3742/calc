@@ -21,7 +21,7 @@ namespace HelloWorldAPI.Controllers
             return Ok(message);
         }
 
-        [HttpGet("calculator/{numOne}/{action}/{numTwo}")]
+        [HttpGet("calculate/{numOne}/{action}/{numTwo}")]
         public IActionResult Calc(double numOne, string action, double numTwo)
         {
             double result;
