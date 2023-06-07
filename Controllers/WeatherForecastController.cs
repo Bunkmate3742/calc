@@ -4,7 +4,7 @@ using System;
 namespace HelloWorldAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("calculate")]
     public class GreetingController : ControllerBase
     {
         private readonly string _name;
@@ -14,21 +14,21 @@ namespace HelloWorldAPI.Controllers
             _name = Environment.GetEnvironmentVariable("NAME") ?? "World";
         }
 
-        [HttpGet]
-        public IActionResult Get()
-        {
-            string message = $"Hello, {_name}!";
-            return Ok(message);
-        }
+        // [HttpGet]
+        // public IActionResult Get()
+        // {
+        //     string message = $"Hello, {_name}!";
+        //     return Ok(message);
+        // }
 
-        [HttpGet("calculate/{numOne}/{action}/{numTwo}")]
-        public IActionResult Calc(string numOneStr, string action, string numTwoStr)
+        [HttpGet("{numOneStr}/{actionStr}/{numTwoStr}")]
+        public IActionResult Calc(string numOneStr, string actionStr, string numTwoStr)
         {
             double numOne = Convert.ToDouble(numOneStr);
             double numTwo = Convert.ToDouble(numTwoStr);
             double result;
             
-            switch(action) 
+            switch(actionStr) 
             {
               case "ADD":
                 result = numOne + numTwo;
