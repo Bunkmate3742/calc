@@ -22,8 +22,10 @@ namespace HelloWorldAPI.Controllers
         }
 
         [HttpGet("calculate/{numOne}/{action}/{numTwo}")]
-        public IActionResult Calc(double numOne, string action, double numTwo)
+        public IActionResult Calc(string numOneStr, string action, string numTwoStr)
         {
+            double numOne = Convert.ToDouble(numOneStr);
+            double numTwo = Convert.ToDouble(numTwoStr);
             double result;
             
             switch(action) 
